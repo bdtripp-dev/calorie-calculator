@@ -28,8 +28,10 @@ MET values are used to measure the intensity of various physical activities. A l
 ---
 
 ## Screenshots
-<img src="assets/screenshot-main.png" width="300" />
-<img src="assets/screenshot-result.png" width="300" />
+<p float="left">
+  <img src="assets/screenshot-main.png" width="250" />
+  <img src="assets/screenshot-result.png" width="250" />
+</p>
 
 ---
 
