@@ -41,41 +41,39 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void calculate(View buttoon) {
+    private Float tryParseFloat(String string, String missingMessage) {
+        try {
+            return Float.parseFloat(string);
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, missingMessage, Toast.LENGTH_LONG).show();
+            return null;
+        }
+    }
+
+    public void calculate(View button) {
         TextView weight = (TextView) findViewById(R.id.weightAmount);
         TextView metValue = (TextView) findViewById(R.id.metValue);
+        Float weightFloat;
+        Float metFloat;
+        weightFloat = tryParseFloat(weightString, getString(R.string.missingWeight));
+        metFloat = tryParseFloat(metString, getString(R.string.missingMET));
 
-        String weightString = weight.getText().toString();
-        String metString = metValue.getText().toString();
+        if (weightFloat == null || metFloat == null) return;
 
-        try {
-            float f = Float.parseFloat(weightString);
-        } catch (NumberFormatException e){
-            Toast.makeText(this, R.string.missingWeight, Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        try {
-            float f = Float.parseFloat(metString);
-        } catch (NumberFormatException e) {
-            Toast.makeText(this, R.string.missingMET, Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        if (Float.parseFloat(weightString) > 1400f) {
+        if (weightFloat <= 0 || weightFloat > 1400f) {
             Toast.makeText(this, R.string.invalidWeight, Toast.LENGTH_LONG).show();
             return;
         }
 
-        if ((Float.parseFloat(metString) < 0.9f) | (Float.parseFloat(metString) > 23f)) {
+        if (metFloat < 0.9f || metFloat > 23f) {
             Toast.makeText(this, R.string.invalidMET, Toast.LENGTH_LONG).show();
             return;
         }
 
         Intent intent = new Intent(this, OutputActivity.class);
 
-        intent.putExtra(EXTRA_WEIGHT, Float.parseFloat(weightString));
-        intent.putExtra(EXTRA_MET, Float.parseFloat(metString));
+        intent.putExtra(EXTRA_WEIGHT, weightFloat);
+        intent.putExtra(EXTRA_MET, metFloat);
 
         startActivity(intent);
     }
