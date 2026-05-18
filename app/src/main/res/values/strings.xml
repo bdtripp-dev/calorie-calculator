@@ -12,7 +12,7 @@
     <string name="metDescription">MET Values can be found at: https://sites.google.com/site/compendiumofphysicalactivities/Activity-Categories</string>
     <string name="missingWeight">Please enter a weight!</string>
     <string name="missingMET">Please enter a MET Value!</string>
-    <string name="invalidWeight">Weight must be less than 1400 lbs</string>
+    <string name="invalidWeight">Weight must be greater than 0 and less than 1400</string>
     <string name="invalidMET">MET Value must be between 0.9 and 23.0</string>
     <string name="about">About</string>
     <string name="settings">Settings</string>
