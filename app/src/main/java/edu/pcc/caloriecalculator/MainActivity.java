@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void calculate(View button) {
-        TextView weight = (TextView) findViewById(R.id.weightAmount);
-        TextView metValue = (TextView) findViewById(R.id.metValue);
+        String weightString = binding.weightAmount.getText().toString().trim();
+        String metString = binding.metValue.getText().toString().trim();
         Float weightFloat;
         Float metFloat;
         weightFloat = tryParseFloat(weightString, getString(R.string.missingWeight));
