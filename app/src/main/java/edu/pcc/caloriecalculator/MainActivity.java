@@ -41,6 +41,14 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private String getWeightInput() {
+        return binding.weightAmount.getText().toString().trim();
+    }
+
+    private String getMetInput() {
+        return binding.metValue.getText().toString().trim();
+    }
+
     private Float tryParseFloat(String string, String missingMessage) {
         try {
             return Float.parseFloat(string);
@@ -51,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void calculate(View button) {
-        String weightString = binding.weightAmount.getText().toString().trim();
-        String metString = binding.metValue.getText().toString().trim();
+        String weightString = getWeightInput();
+        String metString = getMetInput();
         Float weightFloat;
         Float metFloat;
         weightFloat = tryParseFloat(weightString, getString(R.string.missingWeight));
