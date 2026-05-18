@@ -57,14 +57,21 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
     }
+    private Float parseWeight(String input) {
+        return tryParseFloat(input, getString(R.string.missingWeight));
+    }
+
+    private Float parseMet(String input) {
+        return tryParseFloat(input, getString(R.string.missingMET));
+    }
 
     public void calculate(View button) {
         String weightString = getWeightInput();
         String metString = getMetInput();
         Float weightFloat;
         Float metFloat;
-        weightFloat = tryParseFloat(weightString, getString(R.string.missingWeight));
-        metFloat = tryParseFloat(metString, getString(R.string.missingMET));
+        weightFloat = parseWeight(weightString);
+        metFloat = parseMet(metString);
 
         if (weightFloat == null || metFloat == null) return;
 
