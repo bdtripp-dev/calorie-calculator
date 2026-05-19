@@ -19,8 +19,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:parentActivityName="edu.pcc.caloriecalculator.MainActivity"
-            android:name="edu.pcc.caloriecalculator.OutputActivity" >
+            android:name="edu.pcc.caloriecalculator.OutputActivity"
+            android:parentActivityName="edu.pcc.caloriecalculator.MainActivity">
         </activity>
         <activity android:name="edu.pcc.caloriecalculator.AboutActivity"
             android:theme="@style/Base.Theme.AppCompat.Light.Dialog">

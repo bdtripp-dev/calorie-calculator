@@ -16,6 +16,10 @@ public class OutputActivity extends AppCompatActivity {
         binding = ActivityOutputBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         Intent intent = getIntent();
 
         float weightLb = intent.getFloatExtra(MainActivity.EXTRA_WEIGHT, 0.0f);
@@ -31,5 +35,11 @@ public class OutputActivity extends AppCompatActivity {
 
         DecimalFormat format = new DecimalFormat("#.##");
         binding.calorieBurnRate.setText(format.format(burnRate));
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 }
