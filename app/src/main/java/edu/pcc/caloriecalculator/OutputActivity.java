@@ -2,15 +2,12 @@ package edu.pcc.caloriecalculator;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.DecimalFormat;
 
 public class OutputActivity extends AppCompatActivity {
-
-    public static final String TAG = "OutputActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
