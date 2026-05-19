@@ -21,17 +21,10 @@ public class OutputActivity extends AppCompatActivity {
         float weightLb = intent.getFloatExtra(MainActivity.EXTRA_WEIGHT, 0.0f);
         float met = intent.getFloatExtra(MainActivity.EXTRA_MET, 0);
 
-        // Log.d(TAG, "metValue: " + metValue);
-
         float weightKg = weightLb * 0.454f;
         float burnRate = weightKg * met;
 
-        // Log.d(TAG, "weightLb: " + weightAsLb);
-        // Log.d(TAG, "weightKg: " + weightAsKg);
-
-        TextView calorieBurnRate = (TextView) findViewById(R.id.calorieBurnRate);
-
         DecimalFormat format = new DecimalFormat("#.##");
-        calorieBurnRate.setText(format.format(burnRate));
+        binding.calorieBurnRate.setText(format.format(burnRate));
     }
 }
