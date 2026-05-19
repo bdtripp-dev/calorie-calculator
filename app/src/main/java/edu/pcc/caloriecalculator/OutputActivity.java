@@ -17,16 +17,16 @@ public class OutputActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        float weightAsLb = intent.getFloatExtra(MainActivity.EXTRA_WEIGHT, 0.0f);
-        float metValue = intent.getFloatExtra(MainActivity.EXTRA_MET, 0);
+        float weightLb = intent.getFloatExtra(MainActivity.EXTRA_WEIGHT, 0.0f);
+        float met = intent.getFloatExtra(MainActivity.EXTRA_MET, 0);
 
         // Log.d(TAG, "metValue: " + metValue);
 
-        float weightAsKg = weightAsLb * 0.454f;
-        float burnRate = weightAsKg * metValue;
+        float weightKg = weightLb * 0.454f;
+        float burnRate = weightKg * met;
 
-        // Log.d(TAG, "weightAsLb: " + weightAsLb);
-        // Log.d(TAG, "weightAsKg: " + weightAsKg);
+        // Log.d(TAG, "weightLb: " + weightAsLb);
+        // Log.d(TAG, "weightKg: " + weightAsKg);
 
         TextView calorieBurnRate = (TextView) findViewById(R.id.calorieBurnRate);
 
