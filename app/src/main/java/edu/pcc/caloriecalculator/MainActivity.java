@@ -64,30 +64,34 @@ public class MainActivity extends AppCompatActivity {
         return tryParseFloat(input, getString(R.string.missingMET));
     }
 
-    public void calculate(View button) {
-        String weightString = getWeightInput();
-        String metString = getMetInput();
-        Float weightFloat;
-        Float metFloat;
-        weightFloat = parseWeight(weightString);
-        metFloat = parseMet(metString);
-
-        if (weightFloat == null || metFloat == null) return;
-
-        if (weightFloat <= 0 || weightFloat > 1400f) {
+    private boolean isValidWeight(Float weight) {
+        if (weight <= 0 || weight > 1400f) {
             Toast.makeText(this, R.string.invalidWeight, Toast.LENGTH_LONG).show();
-            return;
+            return false;
         }
+        return true;
+    }
 
-        if (metFloat < 0.9f || metFloat > 23f) {
+    private boolean isValidMet(Float met) {
+        if (met < 0.9f || met > 23f) {
             Toast.makeText(this, R.string.invalidMET, Toast.LENGTH_LONG).show();
-            return;
+            return false;
         }
+        return true;
+    }
+
+    public void calculate(View button) {
+        Float weight = parseWeight(getWeightInput());
+        Float met = parseMet(getMetInput());
+
+
+        if (weight == null || met == null) return;
+        if (!isValidWeight(weight) || !isValidMet(met)) return;
 
         Intent intent = new Intent(this, OutputActivity.class);
 
-        intent.putExtra(EXTRA_WEIGHT, weightFloat);
-        intent.putExtra(EXTRA_MET, metFloat);
+        intent.putExtra(EXTRA_WEIGHT, weight);
+        intent.putExtra(EXTRA_MET, met);
 
         startActivity(intent);
     }
