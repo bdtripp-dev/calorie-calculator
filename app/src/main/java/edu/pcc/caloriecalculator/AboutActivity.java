@@ -2,7 +2,6 @@ package edu.pcc.caloriecalculator;
 
 import android.os.Bundle;
 import android.view.View;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AboutActivity extends AppCompatActivity {
