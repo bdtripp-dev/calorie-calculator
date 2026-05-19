@@ -6,15 +6,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    public final static String EXTRA_WEIGHT = "com.murach.caloriesburnedcalculator.WEIGHT";
-    public final static String EXTRA_MET = "com.murach.caloriesburnedcalculator.MET";
+    public static final String EXTRA_WEIGHT = "edu.pcc.caloriecalculator.WEIGHT";
+    public static final String EXTRA_MET = "edu.pcc.caloriecalculator.MET";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
