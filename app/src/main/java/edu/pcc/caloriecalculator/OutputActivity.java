@@ -2,12 +2,12 @@ package edu.pcc.caloriecalculator;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.text.DecimalFormat;
+import edu.pcc.caloriecalculator.databinding.ActivityOutputBinding;
 
 public class OutputActivity extends AppCompatActivity {
+    private ActivityOutputBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
