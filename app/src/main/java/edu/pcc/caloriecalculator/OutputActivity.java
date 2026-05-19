@@ -21,6 +21,11 @@ public class OutputActivity extends AppCompatActivity {
         float weightLb = intent.getFloatExtra(MainActivity.EXTRA_WEIGHT, 0.0f);
         float met = intent.getFloatExtra(MainActivity.EXTRA_MET, 0);
 
+        if (weightLb == 0f || met == 0f) {
+            finish();
+            return;
+        }
+
         float weightKg = weightLb * 0.454f;
         float burnRate = weightKg * met;
 
