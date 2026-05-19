@@ -20,10 +20,12 @@
         </activity>
         <activity
             android:name="edu.pcc.caloriecalculator.OutputActivity"
-            android:parentActivityName="edu.pcc.caloriecalculator.MainActivity">
+            android:parentActivityName="edu.pcc.caloriecalculator.MainActivity"
+            android:exported="false">
         </activity>
         <activity android:name="edu.pcc.caloriecalculator.AboutActivity"
-            android:theme="@style/Base.Theme.AppCompat.Light.Dialog">
+            android:theme="@style/Base.Theme.AppCompat.Light.Dialog"
+            android:exported="false">
         </activity>
     </application>
 
