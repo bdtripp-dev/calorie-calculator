@@ -3,7 +3,7 @@ package edu.pcc.caloriecalculator;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import java.text.DecimalFormat;
+import java.util.Locale;
 import edu.pcc.caloriecalculator.databinding.ActivityOutputBinding;
 
 public class OutputActivity extends AppCompatActivity {
@@ -33,8 +33,8 @@ public class OutputActivity extends AppCompatActivity {
         float weightKg = weightLb * 0.454f;
         float burnRate = weightKg * met;
 
-        DecimalFormat format = new DecimalFormat("#.##");
-        binding.calorieBurnRate.setText(format.format(burnRate));
+        String result = String.format(Locale.US, "%.2f", burnRate);
+        binding.calorieBurnRate.setText(result);
     }
 
     @Override
