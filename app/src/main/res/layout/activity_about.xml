@@ -9,7 +9,6 @@
     android:padding="@dimen/medium_space">
 
     <TextView
-        android:contentDescription="@string/app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/medium_space"
@@ -19,21 +18,18 @@
         android:textColor="@android:color/black"/>
 
     <TextView
-        android:contentDescription="@string/creator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/small_space"
         android:text="@string/creator"/>
 
     <TextView
-        android:contentDescription="@string/version"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/small_space"
         android:text="@string/version"/>
 
     <Button
-        android:contentDescription="@string/close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_space"
