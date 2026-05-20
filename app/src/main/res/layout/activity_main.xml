@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:text="@string/weight_label"
         android:textStyle="bold"
-        android:layout_margin="@dimen/left_column_widgets"
+        android:layout_marginBottom="@dimen/small_space"
         android:textSize="@dimen/large_text_size" />
 
     <EditText
@@ -26,6 +26,7 @@
         android:ems="5"
         android:inputType="numberDecimal"
         android:hint="@string/weight_amount"
+        android:layout_marginBottom="@dimen/medium_space"
         android:textSize="@dimen/large_text_size" />
 
     <!--MET Value-->
@@ -36,7 +37,7 @@
         android:layout_height="wrap_content"
         android:text="@string/met_value_label"
         android:textStyle="bold"
-        android:layout_margin="@dimen/left_column_widgets"
+        android:layout_marginBottom="@dimen/small_space"
         android:textSize="@dimen/large_text_size" />
 
     <EditText
@@ -46,6 +47,7 @@
         android:ems="5"
         android:inputType="numberDecimal"
         android:hint="@string/met_value"
+        android:layout_marginBottom="@dimen/medium_space"
         android:textSize="@dimen/large_text_size" />
 
     <!--Calculate Button-->
@@ -57,7 +59,7 @@
         android:layout_height="wrap_content"
         android:text="@string/calculate_button"
         android:textStyle="bold"
-        android:layout_margin="@dimen/left_column_widgets"
+        android:layout_marginBottom="@dimen/medium_space"
         android:textSize="@dimen/large_text_size" />
 
     <TextView
