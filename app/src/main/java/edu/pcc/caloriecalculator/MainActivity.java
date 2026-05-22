@@ -1,24 +1,25 @@
 package edu.pcc.caloriecalculator;
 
+import edu.pcc.caloriecalculator.databinding.ActivityMainBinding;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    public final static String EXTRA_WEIGHT = "com.murach.caloriesburnedcalculator.WEIGHT";
-    public final static String EXTRA_MET = "com.murach.caloriesburnedcalculator.MET";
+    private ActivityMainBinding binding;
+    public static final String EXTRA_WEIGHT = "edu.pcc.caloriecalculator.WEIGHT";
+    public static final String EXTRA_MET = "edu.pcc.caloriecalculator.MET";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
     }
 
     @Override
@@ -39,41 +40,58 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void calculate(View buttoon) {
-        TextView weight = (TextView) findViewById(R.id.weightAmount);
-        TextView metValue = (TextView) findViewById(R.id.metValue);
+    private String getWeightInput() {
+        return binding.weightAmount.getText().toString().trim();
+    }
 
-        String weightString = weight.getText().toString();
-        String metString = metValue.getText().toString();
+    private String getMetInput() {
+        return binding.metValue.getText().toString().trim();
+    }
 
+    private Float tryParseFloat(String string, String missingMessage) {
         try {
-            float f = Float.parseFloat(weightString);
-        } catch (NumberFormatException e){
-            Toast.makeText(this, R.string.missingWeight, Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        try {
-            float f = Float.parseFloat(metString);
+            return Float.parseFloat(string);
         } catch (NumberFormatException e) {
-            Toast.makeText(this, R.string.missingMET, Toast.LENGTH_LONG).show();
-            return;
+            Toast.makeText(this, missingMessage, Toast.LENGTH_LONG).show();
+            return null;
         }
+    }
+    private Float parseWeight(String input) {
+        return tryParseFloat(input, getString(R.string.missingWeight));
+    }
 
-        if (Float.parseFloat(weightString) > 1400f) {
+    private Float parseMet(String input) {
+        return tryParseFloat(input, getString(R.string.missingMET));
+    }
+
+    private boolean isValidWeight(Float weight) {
+        if (weight <= 0 || weight > 1400f) {
             Toast.makeText(this, R.string.invalidWeight, Toast.LENGTH_LONG).show();
-            return;
+            return false;
         }
+        return true;
+    }
 
-        if ((Float.parseFloat(metString) < 0.9f) | (Float.parseFloat(metString) > 23f)) {
+    private boolean isValidMet(Float met) {
+        if (met < 0.9f || met > 23f) {
             Toast.makeText(this, R.string.invalidMET, Toast.LENGTH_LONG).show();
-            return;
+            return false;
         }
+        return true;
+    }
+
+    public void calculate(View button) {
+        Float weight = parseWeight(getWeightInput());
+        Float met = parseMet(getMetInput());
+
+
+        if (weight == null || met == null) return;
+        if (!isValidWeight(weight) || !isValidMet(met)) return;
 
         Intent intent = new Intent(this, OutputActivity.class);
 
-        intent.putExtra(EXTRA_WEIGHT, Float.parseFloat(weightString));
-        intent.putExtra(EXTRA_MET, Float.parseFloat(metString));
+        intent.putExtra(EXTRA_WEIGHT, weight);
+        intent.putExtra(EXTRA_MET, met);
 
         startActivity(intent);
     }

@@ -7,73 +7,66 @@
     android:layout_height="match_parent"
     android:padding="@dimen/activity_padding"
     tools:context="edu.pcc.caloriecalculator.MainActivity"
-    android:gravity="center" >
+    android:gravity="center"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/weightLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical" >
+        android:text="@string/weight_label"
+        android:textStyle="bold"
+        android:layout_marginBottom="@dimen/small_space"
+        android:textSize="@dimen/large_text_size" />
 
-        <!--Weight-->
+    <EditText
+        android:id="@+id/weightAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="5"
+        android:inputType="numberDecimal"
+        android:hint="@string/weight_amount"
+        android:layout_marginBottom="@dimen/medium_space"
+        android:textSize="@dimen/large_text_size" />
 
-        <TextView
-            android:id="@+id/weightLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/weight_label"
-            android:textStyle="bold"
-            android:layout_margin="@dimen/left_column_widgets"
-            android:textSize="@dimen/large_text_size" />
+    <!--MET Value-->
 
-        <EditText
-            android:id="@+id/weightAmount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="5"
-            android:inputType="numberDecimal"
-            android:hint="@string/weight_amount"
-            android:textSize="@dimen/large_text_size" />
+    <TextView
+        android:id="@+id/metValueLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/met_value_label"
+        android:textStyle="bold"
+        android:layout_marginBottom="@dimen/small_space"
+        android:textSize="@dimen/large_text_size" />
 
-        <!--MET Value-->
+    <EditText
+        android:id="@+id/metValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="5"
+        android:inputType="numberDecimal"
+        android:hint="@string/met_value"
+        android:layout_marginBottom="@dimen/medium_space"
+        android:textSize="@dimen/large_text_size" />
 
-        <TextView
-            android:id="@+id/metValueLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/met_value_label"
-            android:textStyle="bold"
-            android:layout_margin="@dimen/left_column_widgets"
-            android:textSize="@dimen/large_text_size" />
+    <!--Calculate Button-->
 
-        <EditText
-            android:id="@+id/metValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="5"
-            android:inputType="numberDecimal"
-            android:hint="@string/met_value"
-            android:textSize="@dimen/large_text_size" />
+    <Button
+        android:onClick="calculate"
+        android:id="@+id/calculateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/calculate_button"
+        android:textStyle="bold"
+        android:layout_marginBottom="@dimen/medium_space"
+        android:textSize="@dimen/large_text_size" />
 
-        <!--Calculate Button-->
-
-        <Button
-            android:onClick="calculate"
-            android:id="@+id/calculateButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/calculate_button"
-            android:textStyle="bold"
-            android:layout_margin="@dimen/left_column_widgets"
-            android:textSize="@dimen/large_text_size" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/metDescription"
-            android:autoLink="web"
-            android:gravity="center"/>
-
-    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/metDescription"
+        android:autoLink="web"
+        android:gravity="center"/>
 
 </LinearLayout>

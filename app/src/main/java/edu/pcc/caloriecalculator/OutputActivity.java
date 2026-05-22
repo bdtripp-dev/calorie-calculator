@@ -2,38 +2,44 @@ package edu.pcc.caloriecalculator;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.text.DecimalFormat;
+import java.util.Locale;
+import edu.pcc.caloriecalculator.databinding.ActivityOutputBinding;
 
 public class OutputActivity extends AppCompatActivity {
-
-    public static final String TAG = "OutputActivity";
+    private ActivityOutputBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_output);
+        binding = ActivityOutputBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         Intent intent = getIntent();
 
-        float weightAsLb = intent.getFloatExtra(MainActivity.EXTRA_WEIGHT, 0.0f);
-        float metValue = intent.getFloatExtra(MainActivity.EXTRA_MET, 0);
+        float weightLb = intent.getFloatExtra(MainActivity.EXTRA_WEIGHT, 0.0f);
+        float met = intent.getFloatExtra(MainActivity.EXTRA_MET, 0);
 
-        // Log.d(TAG, "metValue: " + metValue);
+        if (weightLb == 0f || met == 0f) {
+            finish();
+            return;
+        }
 
-        float weightAsKg = weightAsLb * 0.454f;
-        float burnRate = weightAsKg * metValue;
+        float weightKg = weightLb * 0.454f;
+        float burnRate = weightKg * met;
 
-        // Log.d(TAG, "weightAsLb: " + weightAsLb);
-        // Log.d(TAG, "weightAsKg: " + weightAsKg);
+        String result = String.format(Locale.US, "%.2f", burnRate);
+        binding.calorieBurnRate.setText(result);
+    }
 
-        TextView calorieBurnRate = (TextView) findViewById(R.id.calorieBurnRate);
-
-        DecimalFormat format = new DecimalFormat("#.##");
-        calorieBurnRate.setText(format.format(burnRate));
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 }
